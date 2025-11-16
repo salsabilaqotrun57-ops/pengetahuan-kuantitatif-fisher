@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ujian Pengetahuan Kuantitatif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-exam">
+  <main class="container">
+    <section class="card" style="flex:1">
+      <div class="topbar">
+        <div>
+          <h2 id="examTitle" style="margin:0;font-family:Orbitron">Ujian: Pengetahuan Kuantitatif</h2>
+          <div style="color:var(--muted);font-size:13px" id="studentName">Peserta: —</div>
+        </div>
+        <div>
+          <div style="text-align:right;color:var(--muted);font-size:14px">Sisa Waktu: <span id="timer">—:—</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;margin-top:12px;align-items:flex-start">
+  
+  <!-- area soal + tombol -->
+  <div style="flex:1">
+    <div class="kotak-soal" id="questionBox">
+      <div class="question-text" id="qText">Memuat soal...</div>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" onclick="prevQuestion()">Sebelumnya</button>
+      <button class="btn" onclick="nextQuestion()">Selanjutnya</button>
+      <button class="btn primary" onclick="finishExam()">Selesai</button>
+    </div>
+  </div>
+
+  <!-- panel navigasi -->
+  <aside class="card" style="width:220px">
+    <h4 class="margin:6px 0 10px 0; color:#e3f8ff; font-family:Orbitron;">Daftar Soal</h4>
+    <div class="panel-numbers" id="panelNumbers"></div>
+  </aside>
+
+</div>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // On load, check session
+    window.addEventListener('load', () => {
+      initExamPage();
+    });
+  </script>
+</body>
+</html>

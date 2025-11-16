@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pengetahuan Kuantitatif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-result">
+  <main class="container">
+    <section class="result-left card">
+      <div class="topbar">
+        <div>
+          <h2 style="margin:0;font-family:Orbitron">Hasil Ujian</h2>
+          <div id="resStudent" style="color:var(--muted);font-size:13px">—</div>
+        </div>
+        <div style="text-align:right">
+          <div style="color:var(--muted);font-size:13px">Waktu pengerjaan: <span id="timeTaken">—</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:20px;align-items:center">
+        <div class="donut-wrap card" style="width:280px;height:280px;display:flex;align-items:center;justify-content:center">
+          <canvas id="donutCanvas" width="220" height="220"></canvas>
+        </div>
+
+        <div style="flex:1">
+          <div class="summary-row">
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Benar</div>
+              <div id="numCorrect" style="font-size:20px;font-weight:700;color:var(--success)">0</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Salah</div>
+              <div id="numWrong" style="font-size:20px;font-weight:700;color:var(--danger)">0</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Kosong</div>
+              <div id="numBlank" style="font-size:20px;font-weight:700;color:#cbd5e1">0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <div id="thetaVal" style="font-size:26px;font-weight:800">0.00</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Skor Akhir</div>
+            <div id="scaledScore" style="font-size:22px;font-weight:700;color:var(--accent-2)">0</div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:12px">
+            <button class="btn" onclick="backToLogin()">Kembali ke Login</button>
+            <button class="btn primary" onclick="showExplanations()">Lihat Pembahasan</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="explanations" class="explain-list" style="margin-top:18px;display:none">
+        <!-- pembahasan akan dimasukkan di sini -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      initResultPage();
+    });
+  </script>
+</body>
+</html>

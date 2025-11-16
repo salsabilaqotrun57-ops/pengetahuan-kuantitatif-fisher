@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pengetahuan Kuantitatif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-login">
+  <main class="container">
+    <section class="login-card">
+      <h1 class="logo">PENGETAHUAN KUANTITATIF</h1>
+
+      <form id="loginForm" class="form-card" onsubmit="return handleLogin(event)">
+        <label>
+          Nama Peserta
+          <input id="username" type="text" autocomplete="off" required placeholder="Masukkan nama kamu" />
+        </label>
+
+        <label>
+          Password
+          <input id="password" type="password" required placeholder="Masukkan Password" />
+        </label>
+
+        <div class="captcha-row">
+          <canvas id="captchaCanvas" width="160" height="50" title="Captcha"></canvas>
+          <div class="captcha-controls" style="flex-direction:row; align-items:center; gap:8px;">
+    <input id="captchaInput" type="text" maxlength="6" placeholder="Masukkan kode" required />
+    <button type="button" class="btn small" onclick="generateCaptcha()">Reload</button>
+</div>
+
+
+        <div class="login-actions">
+          <button type="submit" class="btn primary large">Masuk</button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // generate first captcha on load
+    window.addEventListener('load', () => {
+      generateCaptcha();
+    });
+
+    function handleLogin(e) {
+  e.preventDefault();
+  const name = document.getElementById('username').value.trim();
+  const pass = document.getElementById('password').value;
+  const captchaVal = document.getElementById('captchaInput').value.trim();
+
+  if (!name) { alert('Nama wajib diisi'); return false; }
+  if (pass !== 'admin') { alert('Password salah. Gunakan password: admin'); return false; }
+  if (!validateCaptcha(captchaVal)) { alert('Captcha salah'); return false; }
+
+  const sess = {
+    name,
+    startTime: Date.now()
+  };
+  localStorage.setItem('cbt_session', JSON.stringify(sess));
+
+
+  localStorage.removeItem('cbt_result');
+  localStorage.removeItem('cbt_answers'); 
+
+  window.location.href = 'exam.html';
+  return false;
+}
+
+  </script>
+</body>
+</html>
